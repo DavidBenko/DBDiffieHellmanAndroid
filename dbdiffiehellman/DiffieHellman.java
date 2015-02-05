@@ -58,7 +58,6 @@ public class DiffieHellman {
                         PublicKey theirKey = DHUtils.stringToPubkey(_provider.parseKeyExchangeResponse(response), KEY_FACTORY_TYPE);
                         byte[] salt = DHUtils.generateSalt(SALT_LENGTH);
                         String secret = deriveSecretFromKeys(ourKeys, theirKey);
-                        Log.d("DH","Local Secret: "+secret);
                         String key = deriveKeyFromSecret(secret, salt);
                         String saltString = Base64.encodeToString(salt,Base64.NO_WRAP);
                         callback.onComplete(key,saltString);
